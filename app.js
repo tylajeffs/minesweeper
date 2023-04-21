@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //clicked a bomb
         if(square.classList.contains('bomb')) {
-            console.log('Game Over!')
+            gameOver(square)
             return
         } else {
             //get the square number
@@ -146,11 +146,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 click(newSquare) //recursion
             }
 
-
         }, 10)
-
     }
 
+    //function to handle game over
+    function gameOver(square) {
+        console.log("BOOM!")
+        isGameOver = true
+
+        //show ALL bombs 
+        squares.forEach(square => {
+            if(square.classList.contains('bomb')) {
+                square.innerHTML = '💣'
+            }
+        })
+
+    }
 
 
 
