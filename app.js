@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let width = 10 //set how many squares width
     let squares = []
     let bombAmount = 20
+    let isGameOver = false
 
     //function to create the board
     function createBoard() {
@@ -71,9 +72,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //funcion to handle clicking on square
     function click(square) {
+
+        //if game is over, the square is already checked, or the square is flagged, leave
+        if(isGameOver) return
+        if(square.classList.contains('checked') || square.classList.contains('flag')) return
+
+        //clicked a bomb
         if(square.classList.contains('bomb')) {
-            alert('Game Over!')
+            console.log('Game Over!')
+        } else {
+            //get the square number
+            let total = square.getAttribute('data')
+            if(total!=0) {
+                square.classList.add('checked')
+                square.innerHTML = total
+                return
+            }
+            square.classList.add('checked')
         }
+
     }
 
 
