@@ -27,10 +27,58 @@ document.addEventListener('DOMContentLoaded', () => {
             //add the square to the grid and to the array of squares
             grid.appendChild(square)
             squares.push(square)
+
+            //add event listener for click
+            square.addEventListener('click', function(e) {
+                click(square)
+            })
         }
+
+
+        //add numbers to the surrounding squares
+        for(let i=0; i<squares.length; i++) {
+            let total = 0
+            //check if the square is on the edge
+            const isLeftEdge = (i%width === 0)
+            const isRightEdge = (i%width === width-1)
+
+            if(squares[i].classList.contains('valid')) {
+
+                if(i>0 && !isLeftEdge && squares[i-1].classList.contains('bomb')) total++
+                if(i>9 && !isRightEdge && squares[i+1-width].classList.contains('bomb')) total++
+                if(i>10 && squares[i-width].classList.contains('bomb')) total++ //top
+                if(i>11 && !isLeftEdge && squares[i-1-width].classList.contains('bomb')) total++
+                if(i<98 && !isRightEdge && squares[i+1].classList.contains('bomb')) total++
+                if(i<90 && !isLeftEdge && squares[i-1+width].classList.contains('bomb')) total++
+                if(i<88 && !isRightEdge && squares[i+1+width].classList.contains('bomb')) total++
+                if(i<89 && squares[i+width].classList.contains('bomb')) total++ //bottom
+
+                //set the total to the square
+                squares[i].setAttribute('data',total)
+                console.log(squares[i])
+            }
+        }
+
+
+
+
+
     }
 
     //actually create the board
     createBoard()
+
+
+    //funcion to handle clicking on square
+    function click(square) {
+        if(square.classList.contains('bomb')) {
+            alert('Game Over!')
+        }
+    }
+
+
+
+
+
 
 })
