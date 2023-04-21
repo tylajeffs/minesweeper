@@ -88,11 +88,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 square.innerHTML = total
                 return
             }
-            square.classList.add('checked')
+            //recursion call to check all squares around
+            checkSquare(square)        
         }
-
+        square.classList.add('checked')
     }
 
+
+    //function to check neighboring squares once the square is clicked
+    function checkSquare(square) {
+
+        //check if the square is on the edge
+        const isLeftEdge = (square.id%width === 0)
+        const isRightEdge = (square.id%width === width-1)
+
+        //make it wait 10 milliseconds before doing this part
+        setTimeout(() => {
+            if(square.id>0 && !isLeftEdge) { //left
+                const newId = squares[parseInt(square.id)-1].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+            if(square.id>9 && !isRightEdge) { //top right corner
+                const newId = squares[parseInt(square.id)+1-width].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+            if(square.id>10) { //above
+                const newId = squares[parseInt(square.id)-width].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+            if(square.id>11 && !isLeftEdge) { //top left corner
+                const newId = squares[parseInt(square.id)-1-width].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+            if(square.id<98 && !isRightEdge) { //right
+                const newId = squares[parseInt(square.id)+1].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+            if(square.id<90 && !isLeftEdge) { //bottom left corner
+                const newId = squares[parseInt(square.id)-1+width].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+            if(square.id<88 && !isRightEdge) { //bottom right corner
+                const newId = squares[parseInt(square.id)+1+width].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+            if(square.id<89 ) { //bottom
+                const newId = squares[parseInt(square.id)+width].id
+                const newSquare = document.getElementById(newId)
+                click(newSquare) //recursion
+            }
+
+
+        }, 10)
+
+    }
 
 
 
