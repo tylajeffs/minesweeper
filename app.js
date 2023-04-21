@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //clicked a bomb
         if(square.classList.contains('bomb')) {
             console.log('Game Over!')
+            return
         } else {
             //get the square number
             let total = square.getAttribute('data')
