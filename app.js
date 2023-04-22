@@ -189,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //show ALL bombs 
         squares.forEach(square => {
             if(square.classList.contains('bomb')) {
+                square.classList.add('showBomb')
                 square.innerHTML = '💣'
             }
         })

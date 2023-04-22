@@ -1,20 +1,35 @@
+body {
+    padding-top: 100px;
+}
+
 .grid {
     height: 400px;
     width: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: grey;
+    background-color: lightgrey;
+    margin: auto;
 }
 
 .grid div {
+    display: flex;
     height: 40px;
     width: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-style: outset;
+    border-width: 3px;
+    border-color: rgb(242, 242, 242);
 }
 
-.bomb {
+.showBomb {
     background-color: red;
 }
 
 .checked {
-    background-color: blueviolet;
+    background-color: lightgrey;
+    transition: transform .3s, border-radius .3s;
+    border-style: inset !important;
 }
