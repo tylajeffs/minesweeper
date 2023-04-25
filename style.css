@@ -75,9 +75,28 @@
 
 
 
-
 body {
-    padding-top: 100px;
+    padding-top: 30px;
+}
+
+.title {
+    font-size: 30px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 20px;
+
+}
+
+.options {
+    display: flex;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+   
+
 }
 
 .grid {
@@ -126,7 +145,9 @@ body {
     background-color: var(--restart-bg-color); 
     border: none;
     color: var(--restart-text-color);
-    padding: 15px 32px;
+    padding: 12px 32px;
+    margin-left: 20px;
+    margin-right: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

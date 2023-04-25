@@ -1,24 +1,35 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-
     //set the theme
     const setTheme = theme => document.documentElement.className = theme;
     document.getElementById('theme-select').addEventListener('change', function() {
     setTheme(this.value);
     });
+    const themePicker = document.getElementById('theme-select');
+    let theme = themePicker.options[themePicker.selectedIndex].value;
+    themePicker.addEventListener("change", (e) => {
+        theme = e.target.value;
+      });
+    
 
     //set the grid
     const grid = document.querySelector('.grid')
-    let width = 10 //set how many squares width
+    let width = 10 
     let squares = []
     let bombAmount = 20
     let flags = 0
     let isGameOver = false
     
+    
+
+    //create the board and start the game
+    createBoard()
+
 
 
     //function to create the board
     function createBoard() {
+
+        console.log("creating new board")
 
         //create random bomb placement
         const bombArray = Array(bombAmount).fill('bomb')
@@ -26,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const gameArray = emptySquaresArray.concat(bombArray)
         const shuffledArray = gameArray.sort(() => Math.random() -0.5)
 
-
+        
 
         //create the board
         for(let i=0; i<width*width; i++) {
@@ -79,19 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //actually create the board
-    createBoard()
-
 
     //function to add flags 
     function addFlag(square) {
+
         if(isGameOver) return
 
         if(!square.classList.contains('checked') && flags<bombAmount) {
             //add a flag
             if(!square.classList.contains('flag')) {
                 square.classList.add('flag')
-                square.innerHTML = '🏳️'
+                //which flag emoji to use?
+                switch(theme) {
+                    case 'classic':
+                        square.innerHTML = '🚩'
+                        break;
+                    case 'ocean':
+                        square.innerHTML = '🛟'
+                        break;
+                    case 'garden':
+                        square.innerHTML = '🌺'
+                        break;
+                    case 'space':
+                        square.innerHTML = '🌟'
+                        break;
+                }
+                
                 flags++
             } else {
                 //remove a flag
@@ -105,9 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             flags--
         }
     }
-
-
-
 
 
     //funcion to handle clicking on square
@@ -189,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10)
     }
 
+
     //function to handle game over
     function gameOver(square) {
         console.log("BOOM!")
@@ -198,11 +220,23 @@ document.addEventListener('DOMContentLoaded', () => {
         //show ALL bombs 
         squares.forEach(square => {
             if(square.classList.contains('bomb')) {
-                square.innerHTML = '💣'
+                switch(theme) {
+                    case 'classic':
+                        square.innerHTML = '💣'
+                        break;
+                    case 'ocean':
+                        square.innerHTML = '🦑'
+                        break;
+                    case 'garden':
+                        square.innerHTML = '🐝'
+                        break;
+                    case 'space':
+                        square.innerHTML = '👽'
+                        break;
+                }
             }
         })
     }
-
 
 
     //function to check for a win
@@ -230,17 +264,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-})
+    //function to restart the game
+    function restart(thisTheme) {
+        //reset 
+        width = 10
+        squares = []
+        bombAmount = 20
+        flags = 0
+        isGameOver = false
+        theme = thisTheme
+
+        //clear the old board and create a new one
+        grid.innerHTML = "";
+        createBoard()
+    }
+
+    
 
 
 //TODO add more levels
-//TODO add title 
-//TODO add restart button
-//TODO add play again button
-//TODO add ocean theme, jungle theme, normal theme
 //TODO add button to switch from flag to no flag
 //TODO add colors to numbers
 //TODO add a "you win!" banner
 //TODO add a "game over" banner
 //TODO make the theme stay when the game restarts
-//TODO add fish emojis on restart button
+//TODO add emojis on restart button
+//TODO fix bug where changing theme doesn't cause refresh

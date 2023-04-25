@@ -5,21 +5,35 @@
     <meta charset="UTF-8">
     <title>Minesweeper</title>
     <link rel="stylesheet" href="style.css"></link>
-    <script src="app.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8" async></script>
 </head>
 
 <body>
+
+    <div class="title"> Minesweeper </div>
+
     <div class="grid"></div>
 
-    <select name="theme-select" id="theme-select">
-        <option value="classic">Classic</option>
-        <option value="ocean">Ocean</option>
-        <option value="garden">Garden</option>
-        <option value="space">Space</option>
-        </select>
+    <div class="options">
 
-    <input type="button" value="Restart" class="restart" onClick="window.location.reload(true)">
+        <select name="theme-select" id="theme-select" onchange="restart(this.value)">
+            <option value="classic">Classic</option>
+            <option value="ocean">Ocean</option>
+            <option value="garden">Garden</option>
+            <option value="space">Space</option>
+            </select>
+    
+        <input type="button" value="Restart" class="restart" onClick="restart('classic')">    
 
+        <select name="size-select" id="size-select">
+            <option value="ten">10 x 10</option>
+            <option value="fifteen">15 x 15</option>
+            <option value="twenty">20 x 20</option>
+            </select>
+
+    </div>
+
+    
 
 
 </body>
