@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
     //set the grid
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let bombAmount = 20
     let flags = 0
     let isGameOver = false
+
 
     //function to create the board
     function createBoard() {
@@ -33,12 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
             //add event listener for a normal click
             square.addEventListener('click', function(e) {
                 click(square)
+                checkForWin()
             })
 
             //add event listener for ctrl and left click
             square.oncontextmenu = function(e) {
                 e.preventDefault()
                 addFlag(square)
+                checkForWin()
             }
         }
 
@@ -54,23 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if(i>0 && !isLeftEdge && squares[i-1].classList.contains('bomb')) total++
                 if(i>9 && !isRightEdge && squares[i+1-width].classList.contains('bomb')) total++
-                if(i>10 && squares[i-width].classList.contains('bomb')) total++ //top
-                if(i>11 && !isLeftEdge && squares[i-1-width].classList.contains('bomb')) total++
-                if(i<98 && !isRightEdge && squares[i+1].classList.contains('bomb')) total++
+                if(i>9 && squares[i-width].classList.contains('bomb')) total++ //top
+                if(i>10 && !isLeftEdge && squares[i-1-width].classList.contains('bomb')) total++
+                if(i<99 && !isRightEdge && squares[i+1].classList.contains('bomb')) total++
                 if(i<90 && !isLeftEdge && squares[i-1+width].classList.contains('bomb')) total++
-                if(i<88 && !isRightEdge && squares[i+1+width].classList.contains('bomb')) total++
-                if(i<89 && squares[i+width].classList.contains('bomb')) total++ //bottom
+                if(i<89 && !isRightEdge && squares[i+1+width].classList.contains('bomb')) total++
+                if(i<90 && squares[i+width].classList.contains('bomb')) total++ //bottom
 
                 //set the total to the square
                 squares[i].setAttribute('data',total)
                 console.log(squares[i])
             }
         }
-
-
-
-
-
     }
 
     //actually create the board
@@ -85,9 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
             //add a flag
             if(!square.classList.contains('flag')) {
                 square.classList.add('flag')
-                square.innerHTML = '🚩'
+                square.innerHTML = '🏳️'
                 flags++
-                checkForWin()
+                //checkForWin()
+            } else if(!square.classList.contains('checked') && (flags === bombAmount) && square.classList.contains('flag')){
+                console.log('entered else if')
+                square.classList.remove('flag')
+                square.innerHTML =''
+                flags--
             } else {
                 //remove a flag
                 square.classList.remove('flag')
@@ -95,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 flags--
             }
         }
-
     }
 
 
@@ -147,17 +150,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newSquare = document.getElementById(newId)
                 click(newSquare) //recursion
             }
-            if(square.id>10) { //above
+            if(square.id>9) { //above
                 const newId = squares[parseInt(square.id)-width].id
                 const newSquare = document.getElementById(newId)
                 click(newSquare) //recursion
             }
-            if(square.id>11 && !isLeftEdge) { //top left corner
+            if(square.id>10 && !isLeftEdge) { //top left corner
                 const newId = squares[parseInt(square.id)-1-width].id
                 const newSquare = document.getElementById(newId)
                 click(newSquare) //recursion
             }
-            if(square.id<98 && !isRightEdge) { //right
+            if(square.id<99 && !isRightEdge) { //right
                 const newId = squares[parseInt(square.id)+1].id
                 const newSquare = document.getElementById(newId)
                 click(newSquare) //recursion
@@ -167,12 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newSquare = document.getElementById(newId)
                 click(newSquare) //recursion
             }
-            if(square.id<88 && !isRightEdge) { //bottom right corner
+            if(square.id<89 && !isRightEdge) { //bottom right corner
                 const newId = squares[parseInt(square.id)+1+width].id
                 const newSquare = document.getElementById(newId)
                 click(newSquare) //recursion
             }
-            if(square.id<89 ) { //bottom
+            if(square.id<90) { //bottom
                 const newId = squares[parseInt(square.id)+width].id
                 const newSquare = document.getElementById(newId)
                 click(newSquare) //recursion
@@ -200,13 +203,21 @@ document.addEventListener('DOMContentLoaded', () => {
     //function to check for a win
     function checkForWin() {
         let matches = 0
+        let checkedBoxes = 0
 
         for(let i=0; i<squares.length; i++) {
+            //check that all bombs have been flagged
             if(squares[i].classList.contains('flag') && squares[i].classList.contains('bomb')) {
                 matches++
             }
 
-            if(matches === bombAmount) {
+            //check to make sure all boxes have been clicked
+            if(squares[i].classList.contains('checked') || squares[i].classList.contains('bomb')) {
+                checkedBoxes++
+            }
+
+            //are winning conditions met?
+            if((matches === bombAmount) && (checkedBoxes === width*width)) {
                 console.log("YOU WIN")
                 isGameOver = true
             }
@@ -214,5 +225,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
 })
+
+
+//TODO add more levels
+//TODO add title 
+//TODO add restart button
+//TODO add play again button
+//TODO add ocean theme, jungle theme, normal theme
+//TODO add button to switch from flag to no flag
+//TODO add colors to numbers
+//TODO fix bug where last flag can't be taken back if it's wrong
+//TODO add a "you win!" banner
+//TODO add a "game over" banner
+//TODO make it so you win when all bombs are flagged AND you've checked everything

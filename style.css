@@ -5,13 +5,15 @@ body {
 .grid {
     height: 400px;
     width: 400px;
+    font-size: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: lightgrey;
+    background-color: rgb(101, 29, 114);
     margin: auto;
 }
 
 .grid div {
+    background-color: rgb(131, 77, 140);
     display: flex;
     height: 40px;
     width: 40px;
@@ -19,17 +21,19 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    border-style: outset;
+    border-style: solid;
+    border-radius: 6px;
     border-width: 3px;
-    border-color: rgb(242, 242, 242);
+    border-color: rgb(101, 29, 114);
 }
 
 .showBomb {
-    background-color: red;
+    background-color: red !important;
 }
 
 .checked {
-    background-color: lightgrey;
+    color: white !important;
+    border-style: none !important;
+    background-color: rgb(101, 29, 114) !important;
     transition: transform .3s, border-radius .3s;
-    border-style: inset !important;
 }
