@@ -15,6 +15,7 @@
     --bomb-bg-color: red;
     --restart-bg-color: green;
     --restart-bg-color-hover: darkgreen;
+    --restart-text-color: white;
 
     }
     :root.ocean {
@@ -33,6 +34,7 @@
         --bomb-bg-color: rgb(5, 53, 77);
         --restart-bg-color: rgb(38, 118, 158);
         --restart-bg-color-hover: rgb(5, 53, 77);
+        --restart-text-color: white;
     }
     :root.garden {
         --sq-bg-color: rgb(163,205,119);
@@ -50,6 +52,25 @@
         --bomb-bg-color: rgb(40, 74, 3);
         --restart-bg-color: rgb(90, 130, 47);
         --restart-bg-color-hover: rgb(40, 74, 3);
+        --restart-text-color: white;
+    }
+    :root.space {
+        --sq-bg-color: rgb(25,30,49);
+        --bg-color: rgb(25,30,49);
+        --bord-style: outset;
+        --bord-radius: 0px;
+        --bord-width: 3px;
+        --bord-color: rgb(55, 61, 83);
+        --checked-bg-color: rgb(36, 43, 68);
+        --checked-bord-style: solid;
+        --checked-bord-color: rgb(36, 43, 68);
+        --checked-bord-radius: none;
+        --checked-bord-width: 1px;
+        --text-color: rgb(229, 234, 250);
+        --bomb-bg-color: rgb(246, 157, 23);
+        --restart-bg-color: rgb(246, 157, 23);
+        --restart-bg-color-hover: rgb(214, 130, 3);
+        --restart-text-color: black;
     }
 
 
@@ -104,7 +125,7 @@ body {
 .restart {
     background-color: var(--restart-bg-color); 
     border: none;
-    color: white;
+    color: var(--restart-text-color);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -116,6 +137,6 @@ body {
 
 .restart:hover {
     background-color: var(--restart-bg-color-hover); 
-    color: white;
+    color: var(--restart-text-color);
     transform: scale(1.1);
 }
