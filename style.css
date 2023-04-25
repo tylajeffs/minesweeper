@@ -1,3 +1,24 @@
+:root,
+    :root.classic {
+    --sq-bg-color: lightgrey;
+    --bg-color: lightgrey;
+    --bord-style: outset;
+    --bord-color: rgb(242, 242, 242);
+    --checked-bord-style: inset;
+    --checked-bg-color: lightgrey;
+    --text-color: black;
+    --bomb-bg-color: red;
+    --restart-bg-color: green;
+    --restart-bg-color-hover: darkgreen;
+    }
+    :root.ocean {
+    --sq-bg-color: #121212;
+    --text-color: #45ADFE;
+    }
+
+
+
+
 body {
     padding-top: 100px;
 }
@@ -8,12 +29,12 @@ body {
     font-size: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(101, 29, 114);
+    background-color: var(--bg-color);
     margin: auto;
 }
 
 .grid div {
-    background-color: rgb(131, 77, 140);
+    background-color: var(--sq-bg-color);
     display: flex;
     height: 40px;
     width: 40px;
@@ -21,25 +42,25 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    border-style: solid;
+    border-style: var(--bord-style);
     border-radius: 6px;
     border-width: 3px;
-    border-color: rgb(101, 29, 114);
+    border-color: var(--bord-color);
 }
 
 .showBomb {
-    background-color: red !important;
+    background-color: var(--bomb-bg-color) !important;
 }
 
 .checked {
-    color: white !important;
-    border-style: none !important;
-    background-color: rgb(101, 29, 114) !important;
+    color: var(--text-color) !important;
+    border-style: var(--checked-bord-style) !important;
+    background-color: var(--checked-bg-color) !important;
     transition: transform .3s, border-radius .3s;
 }
 
 .restart {
-    background-color: #4CAF50; /* Green */
+    background-color: var(--restart-bg-color); 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -52,6 +73,7 @@ body {
 }
 
 .restart:hover {
-    background-color: blue; /* Green */
+    background-color: var(--restart-bg-color-hover); 
     color: white;
+    transform: scale(1.1);
 }

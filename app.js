@@ -1,6 +1,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    //set the theme
+    const setTheme = theme => document.documentElement.className = theme;
+    document.getElementById('theme-select').addEventListener('change', function() {
+    setTheme(this.value);
+    });
+    
     //set the grid
     const grid = document.querySelector('.grid')
     let width = 10 //set how many squares width
@@ -8,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let bombAmount = 20
     let flags = 0
     let isGameOver = false
+    
 
 
     //function to create the board
