@@ -233,6 +233,5 @@ document.addEventListener('DOMContentLoaded', () => {
 //TODO add ocean theme, jungle theme, normal theme
 //TODO add button to switch from flag to no flag
 //TODO add colors to numbers
-//TODO fix bug where last flag can't be taken back if it's wrong
 //TODO add a "you win!" banner
 //TODO add a "game over" banner
