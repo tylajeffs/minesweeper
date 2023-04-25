@@ -86,18 +86,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 square.classList.add('flag')
                 square.innerHTML = '🏳️'
                 flags++
-                //checkForWin()
-            } else if(!square.classList.contains('checked') && (flags === bombAmount) && square.classList.contains('flag')){
-                console.log('entered else if')
-                square.classList.remove('flag')
-                square.innerHTML =''
-                flags--
             } else {
                 //remove a flag
                 square.classList.remove('flag')
                 square.innerHTML = ''
                 flags--
             }
+        } else if(!square.classList.contains('checked') && (flags === bombAmount) && square.classList.contains('flag')){
+            square.classList.remove('flag')
+            square.innerHTML =''
+            flags--
         }
     }
 
@@ -238,4 +236,3 @@ document.addEventListener('DOMContentLoaded', () => {
 //TODO fix bug where last flag can't be taken back if it's wrong
 //TODO add a "you win!" banner
 //TODO add a "game over" banner
-//TODO make it so you win when all bombs are flagged AND you've checked everything
