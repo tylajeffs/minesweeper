@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('theme-select').addEventListener('change', function() {
     setTheme(this.value);
     });
-    
+
     //set the grid
     const grid = document.querySelector('.grid')
     let width = 10 //set how many squares width
@@ -193,11 +193,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameOver(square) {
         console.log("BOOM!")
         isGameOver = true
+        square.classList.add('show-clicked-bomb')
 
         //show ALL bombs 
         squares.forEach(square => {
             if(square.classList.contains('bomb')) {
-                square.classList.add('showBomb')
                 square.innerHTML = '💣'
             }
         })

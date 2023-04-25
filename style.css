@@ -3,17 +3,36 @@
     --sq-bg-color: lightgrey;
     --bg-color: lightgrey;
     --bord-style: outset;
+    --bord-radius: 0px;
+    --bord-width: 3px;
     --bord-color: rgb(242, 242, 242);
-    --checked-bord-style: inset;
     --checked-bg-color: lightgrey;
+    --checked-bord-style: solid;
+    --checked-bord-color: darkgrey;
+    --checked-bord-radius: none;
+    --checked-bord-width: 1px;
     --text-color: black;
     --bomb-bg-color: red;
     --restart-bg-color: green;
     --restart-bg-color-hover: darkgreen;
+
     }
     :root.ocean {
-    --sq-bg-color: #121212;
-    --text-color: #45ADFE;
+        --sq-bg-color: rgb(73,156,199);
+        --bg-color: rgb(73,156,199);
+        --bord-style: outset;
+        --bord-radius: 0px;
+        --bord-width: 3px;
+        --bord-color: rgb(111, 196, 238);
+        --checked-bg-color: rgb(38, 118, 158);
+        --checked-bord-style: solid;
+        --checked-bord-color: rgb(38, 118, 158);
+        --checked-bord-radius: none;
+        --checked-bord-width: 1px;
+        --text-color: white;
+        --bomb-bg-color: rgb(5, 53, 77);
+        --restart-bg-color: rgb(38, 118, 158);
+        --restart-bg-color-hover: rgb(5, 53, 77);
     }
 
 
@@ -43,17 +62,23 @@ body {
     align-items: center;
     box-sizing: border-box;
     border-style: var(--bord-style);
-    border-radius: 6px;
-    border-width: 3px;
+    border-radius: var(--bord-radius);
+    border-width: var(--bord-width);
     border-color: var(--bord-color);
 }
 
-.showBomb {
+.show-clicked-bomb {
     background-color: var(--bomb-bg-color) !important;
+    border-radius: none !important;
+    border-width: none !important;
+    border-style: none !important;
 }
 
 .checked {
     color: var(--text-color) !important;
+    border-radius: var(--checked-bord-radius) !important;
+    border-width: var(--checked-bord-width) !important;
+    border-color: var(--checked-bord-color) !important;
     border-style: var(--checked-bord-style) !important;
     background-color: var(--checked-bg-color) !important;
     transition: transform .3s, border-radius .3s;
