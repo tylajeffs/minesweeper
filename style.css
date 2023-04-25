@@ -34,6 +34,23 @@
         --restart-bg-color: rgb(38, 118, 158);
         --restart-bg-color-hover: rgb(5, 53, 77);
     }
+    :root.garden {
+        --sq-bg-color: rgb(163,205,119);
+        --bg-color: rgb(163,205,119);
+        --bord-style: outset;
+        --bord-radius: 0px;
+        --bord-width: 3px;
+        --bord-color: rgb(163,205,119);
+        --checked-bg-color: rgb(114, 160, 66);
+        --checked-bord-style: solid;
+        --checked-bord-color: rgb(114, 160, 66);
+        --checked-bord-radius: none;
+        --checked-bord-width: 1px;
+        --text-color: rgb(241, 255, 226);
+        --bomb-bg-color: rgb(40, 74, 3);
+        --restart-bg-color: rgb(90, 130, 47);
+        --restart-bg-color-hover: rgb(40, 74, 3);
+    }
 
 
 

@@ -242,3 +242,5 @@ document.addEventListener('DOMContentLoaded', () => {
 //TODO add colors to numbers
 //TODO add a "you win!" banner
 //TODO add a "game over" banner
+//TODO make the theme stay when the game restarts
+//TODO add fish emojis on restart button
