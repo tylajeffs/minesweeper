@@ -14,6 +14,7 @@
     //set the grid
     const grid = document.querySelector('.grid')
     const popup = document.getElementById('pop-up-banner')
+    const title = document.getElementById('title')
     let width = 10 
     let squares = []
     let bombAmount = 20
@@ -31,6 +32,8 @@
     function createBoard() {
 
         console.log("creating new board")
+
+    
 
         //create random bomb placement
         const bombArray = Array(bombAmount).fill('bomb')
@@ -86,7 +89,7 @@
 
                 //set the total to the square
                 squares[i].setAttribute('data',total)
-                console.log(squares[i])
+                //console.log(squares[i])
             }
         }
     }
@@ -268,20 +271,38 @@
 
 
     //function to restart the game
-    function restart() {
+    function restart(thisTheme = theme) {
         //reset 
         width = 10
         squares = []
         bombAmount = 20
         flags = 0
         isGameOver = false
-        console.log("restart theme: " + theme)
+        console.log("restart theme: " + thisTheme)
 
         closePopUp()
 
         //clear the old board and create a new one
         grid.innerHTML = "";
+
         createBoard()
+
+        console.log("set the theme")
+        //set the theme
+        switch(thisTheme) {
+            case 'classic':
+                title.innerHTML = 'Classic Minesweeper'
+                break;
+            case 'ocean':
+                title.innerHTML = 'Ocean Minesweeper'
+                break;
+            case 'garden':
+                title.innerHTML = 'Garden Minesweeper'
+                break;
+            case 'space':
+                title.innerHTML = 'Space Minesweeper'
+                break;
+        }
     }
 
     
@@ -306,8 +327,6 @@
 
 //TODO add more levels
 //TODO add button to switch from flag to no flag
-//TODO add colors to numbers
-//TODO add a "you win!" banner
-//TODO add a "game over" banner
 //TODO add emojis on restart button
-//TODO fix restart bug where emojis go back to classic
+//TODO have title change
+
