@@ -13,6 +13,7 @@
 
     //set the grid
     const grid = document.querySelector('.grid')
+    const popup = document.getElementById('pop-up-banner')
     let width = 10 
     let squares = []
     let bombAmount = 20
@@ -115,7 +116,7 @@
                         square.innerHTML = '🌟'
                         break;
                 }
-                
+        
                 flags++
             } else {
                 //remove a flag
@@ -216,6 +217,7 @@
         console.log("BOOM!")
         isGameOver = true
         square.classList.add('show-clicked-bomb')
+        openPopUp("💀 GAME OVER 💀")
 
         //show ALL bombs 
         squares.forEach(square => {
@@ -259,20 +261,23 @@
             if((matches === bombAmount) && (checkedBoxes === width*width)) {
                 console.log("YOU WIN")
                 isGameOver = true
+                openPopUp("🎉 YOU WIN! 🎉")
             }
         }
     }
 
 
     //function to restart the game
-    function restart(thisTheme) {
+    function restart() {
         //reset 
         width = 10
         squares = []
         bombAmount = 20
         flags = 0
         isGameOver = false
-        theme = thisTheme
+        console.log("restart theme: " + theme)
+
+        closePopUp()
 
         //clear the old board and create a new one
         grid.innerHTML = "";
@@ -280,6 +285,23 @@
     }
 
     
+    //function to open the popup
+    function openPopUp(message) {
+
+        setTimeout(function(){
+            popup.innerHTML = message
+            popup.classList.add("open-popup")
+        }, 300);
+    }
+
+
+    //function to close the popup
+    function closePopUp() {
+        popup.classList.remove("open-popup")
+    }
+
+
+
 
 
 //TODO add more levels
@@ -287,6 +309,5 @@
 //TODO add colors to numbers
 //TODO add a "you win!" banner
 //TODO add a "game over" banner
-//TODO make the theme stay when the game restarts
 //TODO add emojis on restart button
-//TODO fix bug where changing theme doesn't cause refresh
+//TODO fix restart bug where emojis go back to classic

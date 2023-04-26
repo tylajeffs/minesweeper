@@ -16,6 +16,8 @@
     --restart-bg-color: green;
     --restart-bg-color-hover: darkgreen;
     --restart-text-color: white;
+    --win-bg-color: rgba(27, 205, 8, 0.9);
+    --lose-bg-color: rgba(255,0,0,0.9);
 
     }
     :root.ocean {
@@ -35,6 +37,8 @@
         --restart-bg-color: rgb(38, 118, 158);
         --restart-bg-color-hover: rgb(5, 53, 77);
         --restart-text-color: white;
+        --win-bg-color: rgba(252,80,48,0.9);
+        --lose-bg-color: rgba(252,80,48,0.9);
     }
     :root.garden {
         --sq-bg-color: rgb(163,205,119);
@@ -53,6 +57,8 @@
         --restart-bg-color: rgb(90, 130, 47);
         --restart-bg-color-hover: rgb(40, 74, 3);
         --restart-text-color: white;
+        --win-bg-color: rgba(255,90,137,0.9);
+        --lose-bg-color: rgba(255,90,137,0.9);
     }
     :root.space {
         --sq-bg-color: rgb(25,30,49);
@@ -71,6 +77,8 @@
         --restart-bg-color: rgb(246, 157, 23);
         --restart-bg-color-hover: rgb(214, 130, 3);
         --restart-text-color: black;
+        --win-bg-color: rgba(246, 157, 23, 0.9);
+        --lose-bg-color: rgba(246, 157, 23, 0.9);
     }
 
 
@@ -161,3 +169,35 @@ body {
     color: var(--restart-text-color);
     transform: scale(1.1);
 }
+
+.pop-up-banner {
+    width: 300px;
+    height: 35px;
+    border-radius: 3px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,0) scale(0.1);
+    text-align: center;
+    font-size: 30px;
+    padding: 25px 30px 30px;
+    background-color:var(--win-bg-color);
+    color: white;
+    visibility: hidden;
+    transition: transform 0.1s;
+}
+
+
+
+.open-popup {
+    visibility: visible;
+    transform: translate(-50%,0) scale(1);
+}
+
+.close {
+    font-size: 45px;
+    font-weight: 600;
+    color: black;
+    display: inline-block;
+    transform: rotate(45deg);
+  }
