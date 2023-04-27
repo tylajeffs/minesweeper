@@ -15,7 +15,7 @@
     const grid = document.querySelector('.grid')
     const popup = document.getElementById('pop-up-banner')
     const title = document.getElementById('title')
-    let width = 10 
+    let width = 20 
     let squares = []
     let bombAmount = 20
     let flags = 0
@@ -278,17 +278,14 @@
         bombAmount = 20
         flags = 0
         isGameOver = false
-        console.log("restart theme: " + thisTheme)
-
         closePopUp()
 
         //clear the old board and create a new one
         grid.innerHTML = "";
-
         createBoard()
 
-        console.log("set the theme")
-        //set the theme
+
+        //set the theme for the title
         switch(thisTheme) {
             case 'classic':
                 title.innerHTML = 'Classic Minesweeper'
@@ -327,6 +324,5 @@
 
 //TODO add more levels
 //TODO add button to switch from flag to no flag
-//TODO add emojis on restart button
-//TODO have title change
+
 
