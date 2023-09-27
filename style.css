@@ -83,13 +83,14 @@ body {
     padding-top: 30px;
 }
 
+
+
 .title {
     font-size: 30px;
     display: flex;
     text-align: center;
     justify-content: center;
     padding-bottom: 20px;
-
 }
 
 .options {

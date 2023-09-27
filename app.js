@@ -324,5 +324,5 @@
 
 //TODO add more levels
 //TODO add button to switch from flag to no flag
-
+//TODO fix bug where it starts with too many squares
 
