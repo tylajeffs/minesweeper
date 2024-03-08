@@ -15,7 +15,9 @@ An application made to mimic the classic minesweeper game. Includes custom level
 <br>
 <br>
 
-https://github.com/tylajeffs/minesweeper/assets/40805521/63bb297d-81a6-4703-9881-f28cbff2e3c3
+
+https://github.com/tylajeffs/minesweeper/assets/40805521/0e4f5ffe-8c9b-4d8f-9970-b137f6b55fa7
+
 
 
 ## Installation and Setup Instructions
