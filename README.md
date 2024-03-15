@@ -43,4 +43,4 @@ Right click the html file and click on `Open with Live Server`. This will automa
 ## Reflection
 This was a project I made during a break between semesters while getting my degree in CS. I wanted to build a minesweeper game because I loved playing it as a child. I've only done minimal coding with Javascript before, so I built this project using vanilla Javascript, HTML, and CSS to build up my skills in those areas. 
 
-One of the main challenges I ran into was scaling the game board when I wanted to create additional levels. ADD SOMETHING HERE ABOUT HOW IT WOULDN"T RESET CORRECTLY OR SCALE CORRECTLY. This led me to research... HOW DID I FIX IT?
+One of the main challenges I ran into was checking the neighboring squares when a user clicked a square that wasn't a bomb. Sometimes, the neighboring squares needed to have a number representing the number of bombs they were touching, but other times, the squares weren't touching any bombs, and clicking it would open up a larger area. After researching and using my whiteboard to diagram it, I used recursion to check the squares, solving the problem. 
